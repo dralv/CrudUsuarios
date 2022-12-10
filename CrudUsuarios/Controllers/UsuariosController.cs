@@ -25,6 +25,7 @@ namespace CrudUsuarios.Controllers
             var usuario = _mapper.Map<Usuario>(usuarioDTO);
             if (usuario == null) BadRequest("Usuário inválido");
             usuario.DataCriacao = DateTime.Now;
+            usuario.SenhaHash();
             _context.Usuarios.Add(usuario);
             _context.SaveChanges();
             return CreatedAtAction(nameof(RecuperarPorLogin), new { login = usuario.Login }, usuario);

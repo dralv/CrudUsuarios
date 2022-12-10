@@ -1,4 +1,6 @@
-﻿namespace CrudUsuarios.Models
+﻿using CrudUsuarios.Helper;
+
+namespace CrudUsuarios.Models
 {
     public class Usuario
     {
@@ -10,5 +12,10 @@
         public DateTime DataCriacao { get; set; }
         public DateTime? DataAtualizacao { get; set; }
         public bool Ativo { get; set; }
+
+        public void SenhaHash()
+        {
+            Senha = Senha.GerarHash();
+        }
     }
 }
