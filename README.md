@@ -11,3 +11,7 @@ Propriedades da classe de Usuario:
 - DataInsercao
 - DataAlteracao
 - Ativo
+
+
+### Observação
+**_Esse projeto está sendo feito no formato de monólito, sem separação de responsabilidades, padrões ou arquiteturas. O objeto é refatorar o código utilizando Clean Architecture._**
