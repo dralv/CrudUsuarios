@@ -24,6 +24,13 @@ namespace CrudUsuarios.Controllers
         {
             var usuario = _mapper.Map<Usuario>(usuarioDTO);
             if (usuario == null) BadRequest("Usuário inválido");
+            foreach(var item in _context.Usuarios)
+            {
+                if(usuario.Login==item.Login)
+                {
+                    return BadRequest("Usuário já existe");
+                }
+            }
             usuario.DataCriacao = DateTime.Now;
             usuario.SenhaHash();
             _context.Usuarios.Add(usuario);
