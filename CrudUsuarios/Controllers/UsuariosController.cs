@@ -19,7 +19,7 @@ namespace CrudUsuarios.Controllers
             _mapper = mapper;
         }
 
-        [HttpPost]
+        [HttpPost("cadastrar")]
         public IActionResult CadastrarUsuario([FromBody] UsuarioDTO usuarioDTO)
         {
             var usuario = _mapper.Map<Usuario>(usuarioDTO);
@@ -50,14 +50,14 @@ namespace CrudUsuarios.Controllers
 
         }
 
-        [HttpGet]
+        [HttpGet("listar")]
         public IEnumerable<Usuario> ListarUsuarios()
         {
             var usuarios =  _context.Usuarios;
             return usuarios;
         }
 
-        [HttpGet("{login}")]
+        [HttpGet("listar/{login}")]
         public IActionResult RecuperarPorLogin(string login)
         {
             var usuario = _context.Usuarios.FirstOrDefault(u=>u.Login == login);
@@ -66,7 +66,7 @@ namespace CrudUsuarios.Controllers
             return Ok(usuarioDto);
         }
 
-        [HttpPut("{login}")]
+        [HttpPut("alterarStatus/{login}")]
         public IActionResult AlterarStatus(string login)
         {
             var usuario = _context.Usuarios.FirstOrDefault(u=>u.Login==login);
